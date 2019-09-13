@@ -18,17 +18,20 @@ namespace MyLeasing.Web.Controllers
         private readonly IUserHelper _userHelper;
         private readonly ICombosHelper _combosHelper;
         private readonly IConverterHelper _converterHelper;
+        private readonly IImageHelper _imageHelper;
 
         public OwnersController
             (DataContext dataContext,
             IUserHelper userHelper,
             ICombosHelper combosHelper,
-            IConverterHelper converterHelper)
+            IConverterHelper converterHelper,
+            IImageHelper imageHelper)
         {
             _dataContext = dataContext;
             _userHelper = userHelper;
             _combosHelper = combosHelper;
             _converterHelper = converterHelper;
+            this._imageHelper = imageHelper;
         }
 
         public IActionResult Index()
@@ -302,6 +305,57 @@ namespace MyLeasing.Web.Controllers
 
             return View(property);
         }
+
+
+        public async Task<IActionResult> AddImage(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var property = await _dataContext.Properties.FindAsync(id.Value);
+            if (property == null)
+            {
+                return NotFound();
+            }
+
+            var model = new PropertyImageViewModel
+            {
+                Id = property.Id
+            };
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddImage(PropertyImageViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var path = string.Empty;
+
+                if (model.ImageFile != null)
+                {
+                    path = await _imageHelper.UploadImageAsync(model.ImageFile);
+                }
+
+                var propertyImage = new PropertyImage
+                {
+                    ImageUrl = path,
+                    Property = await _dataContext.Properties.FindAsync(model.Id)
+                };
+
+                _dataContext.PropertyImages.Add(propertyImage);
+                await _dataContext.SaveChangesAsync();
+                //return RedirectToAction($"{nameof(DetailsProperty)}/{model.Id}");
+                return RedirectToAction("DetailsProperty", "Owners",  new { id = model.Id });
+            }
+
+            return View(model);
+        }
+
+
 
     }
 }

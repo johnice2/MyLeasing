@@ -8,12 +8,16 @@
   <ItemGroup>
     <Compile Remove="wwwroot\lib\bootstrap\dist\css\**" />
     <Compile Remove="wwwroot\lib\bootstrap\dist\img\**" />
+    <Compile Remove="wwwroot\NewFolder2\**" />
     <Content Remove="wwwroot\lib\bootstrap\dist\css\**" />
     <Content Remove="wwwroot\lib\bootstrap\dist\img\**" />
+    <Content Remove="wwwroot\NewFolder2\**" />
     <EmbeddedResource Remove="wwwroot\lib\bootstrap\dist\css\**" />
     <EmbeddedResource Remove="wwwroot\lib\bootstrap\dist\img\**" />
+    <EmbeddedResource Remove="wwwroot\NewFolder2\**" />
     <None Remove="wwwroot\lib\bootstrap\dist\css\**" />
     <None Remove="wwwroot\lib\bootstrap\dist\img\**" />
+    <None Remove="wwwroot\NewFolder2\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -25,6 +29,13 @@
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Folder Include="wwwroot\images\Properties\" />
+    <Folder Include="wwwroot\NewFolder1\" />
+    <Folder Include="wwwroot\NewFolder\" />
   </ItemGroup>
 
 </Project>
