@@ -34,18 +34,6 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Owners" asp-action="Index">Owners</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Lessees" asp-action="Index">Lessees</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Contracts" asp-action="Index">Contracts</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Properties" asp-action="Index">Properties</a>
-                        </li>
                         @if (User.Identity.IsAuthenticated && User.IsInRole("Manager"))
                         {
                             <li class="dropdown">
@@ -59,7 +47,18 @@
                                     </li>
                                 </ul>
                             </li>
-
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Owners" asp-action="Index">Owners</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Lessees" asp-action="Index">Lessees</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Contracts" asp-action="Index">Contracts</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Properties" asp-action="Index">Properties</a>
+                            </li>
                         }
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
