@@ -138,7 +138,7 @@ namespace MyLeasing.Web.Controllers
                 return NotFound();
             }
 
-            var model = new EditUserViewModel
+            var view = new EditUserViewModel
             {
                 Address = owner.User.Address,
                 Document = owner.User.Document,
@@ -148,30 +148,30 @@ namespace MyLeasing.Web.Controllers
                 PhoneNumber = owner.User.PhoneNumber
             };
 
-            return View(model);
+            return View(view);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(EditUserViewModel model)
+        public async Task<IActionResult> Edit(EditUserViewModel view)
         {
             if (ModelState.IsValid)
             {
                 var owner = await _dataContext.Owners
                     .Include(o => o.User)
-                    .FirstOrDefaultAsync(o => o.Id == model.Id);
+                    .FirstOrDefaultAsync(o => o.Id == view.Id);
 
-                owner.User.Document = model.Document;
-                owner.User.FirstName = model.FirstName;
-                owner.User.LastName = model.LastName;
-                owner.User.Address = model.Address;
-                owner.User.PhoneNumber = model.PhoneNumber;
+                owner.User.Document = view.Document;
+                owner.User.FirstName = view.FirstName;
+                owner.User.LastName = view.LastName;
+                owner.User.Address = view.Address;
+                owner.User.PhoneNumber = view.PhoneNumber;
 
                 await _userHelper.UpdateUserAsync(owner.User);
                 return RedirectToAction(nameof(Index));
             }
 
-            return View(model);
+            return View(view);
         }
 
 
@@ -186,22 +186,44 @@ namespace MyLeasing.Web.Controllers
 
             var owner = await _dataContext.Owners
                 .Include(o => o.User)
-                .Include(o => o.Properties)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (owner == null)
             {
                 return NotFound();
             }
 
-            if (owner.Properties.Count != 0)
-            {
-                ModelState.AddModelError(string.Empty, "Owner cam´t be delele because it has properties.");
-                return RedirectToAction("Index");
-            }
-
             _dataContext.Owners.Remove(owner);
             await _dataContext.SaveChangesAsync();
             await _userHelper.DeleteUserAsync(owner.User.Email);
+            return RedirectToAction(nameof(Index));
+        }
+
+
+        //public async Task<IActionResult> Delete(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    var owner = await _dataContext.Owners
+        //        .FirstOrDefaultAsync(m => m.Id == id);
+        //    if (owner == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    return View(owner);
+        //}
+
+        // POST: Owners/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var owner = await _dataContext.Owners.FindAsync(id);
+            _dataContext.Owners.Remove(owner);
+            await _dataContext.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
@@ -242,7 +264,6 @@ namespace MyLeasing.Web.Controllers
 
 
             }
-            model.PropertyTypes = _combosHelper.GetComboPropertyTypes();
             return View(model);
      
         }
@@ -403,8 +424,6 @@ namespace MyLeasing.Web.Controllers
 
             }
 
-            model.Lessees = _combosHelper.GetComboLessees();
-
             return View(model);
         }
 
@@ -496,46 +515,16 @@ namespace MyLeasing.Web.Controllers
 
             var property = await _dataContext.Properties
                 .Include(p => p.Owner)
-                .Include(p => p.PropertyImages)
-                .Include(p => p.Contracts)
                 .FirstOrDefaultAsync(pi => pi.Id == id.Value);
             if (property == null)
             {
                 return NotFound();
             }
-            if (property.Contracts.Count != 0)
-            {
-                ModelState.AddModelError(string.Empty, "The property can´t be deleted because it has contracts.");
-                                return RedirectToAction("Details", "Owners", new { id = property.Owner.Id });
-            }
-            _dataContext.PropertyImages.RemoveRange(property.PropertyImages);
+
             _dataContext.Properties.Remove(property);
             await _dataContext.SaveChangesAsync();
             //return RedirectToAction($"{nameof(Details)}/{property.Owner.Id}");
             return RedirectToAction("Details", "Owners", new { id = property.Owner.Id });
-        }
-
-        public async Task<IActionResult> DetailsContract(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var contract = await _dataContext.Contracts
-                .Include(c => c.Owner)
-                .ThenInclude(o => o.User)
-                .Include(c => c.Lessee)
-                .ThenInclude(o => o.User)
-                .Include(c => c.Property)
-                .ThenInclude(p => p.PropertyType)
-                .FirstOrDefaultAsync(pi => pi.Id == id.Value);
-            if (contract == null)
-            {
-                return NotFound();
-            }
-
-            return View(contract);
         }
 
 
