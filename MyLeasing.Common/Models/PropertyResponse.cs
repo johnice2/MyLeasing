@@ -31,7 +31,7 @@ namespace MyLeasing.Common.Models
 
         public ICollection<ContractResponse> Contracts { get; set; }
 
-        public string FirtsImage =>PropertyImages == null || PropertyImages.Count == 0 
+        public string FirtsImage => PropertyImages == null || PropertyImages.Count == 0 
                     ?"https://myleasing.azurewebsites.net/images/Properties/noImage.png"
                     :PropertyImages.FirstOrDefault().ImageUrl;
             
