@@ -10,6 +10,32 @@
             <!-- Parameters -->
             <x:String x:Key="UrlAPI">https://leasingweb.azurewebsites.net/</x:String>
 
+            <!-- Colors -->
+            <Color x:Key="colorBackgroud">#F2EEAC</Color>
+            <Color x:Key="colorPrimary">#3D80D9</Color>
+            <Color x:Key="colorSecondary">#99D9F2</Color>
+            <Color x:Key="colorDanger">#F25270</Color>
+            <Color x:Key="colorAccent">#A3AFBF</Color>
+            <Color x:Key="colorFont">#000000</Color>
+            <Color x:Key="colorFontInverse">#F2F2F2</Color>
+
+            <!-- Styles -->
+            <Style TargetType="Button">
+                <Setter Property="BackgroundColor" Value="{StaticResource colorPrimary}" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="TextColor" Value="{StaticResource colorFontInverse}" />
+            </Style>
+
+            <Style x:Key="SecondaryButton" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="{StaticResource colorSecondary}" />
+            </Style>
+
+            <Style TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource colorFont}" />
+            </Style>
+
+
+
         </ResourceDictionary>
 
     </Application.Resources>
