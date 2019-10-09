@@ -13,15 +13,19 @@
             Source="Background2"
             Aspect="AspectFill"
                    />
-    <StackLayout Padding="50,185,0,10">
-        <Label
+    <StackLayout Padding="48,160,0,0">
+            <Label
+                FontSize="Title"
+                Text="LeasingApp"
+                TextColor="{StaticResource colorButtonPrimary}"/>
+            <Label
                 Text="LOGIN"
-                FontSize="50"
+                FontSize="48"
                 FontAttributes="Bold"
                 TextColor="{StaticResource colorPrimary}"/>
 
         <Label
-                Margin="0,55,0,0"
+                Margin="0,56,0,0"
                 Text="Email"
                 TextColor="{StaticResource colorPrimary}"/>
         <Local:CustomEntry   
@@ -32,7 +36,7 @@
                     HorizontalTextAlignment="Start" 
                     HorizontalOptions="FillAndExpand" 
                     Keyboard="Email"
-                    Margin="0,0,50,0"
+                    Margin="0,0,48,0"
                     Placeholder="Enter your Email" 
                     PlaceholderColor="{StaticResource colorSecondary}"
                     TextColor="{StaticResource colorPrimary}"
@@ -51,7 +55,7 @@
                 HorizontalTextAlignment="Start" 
                 HorizontalOptions="FillAndExpand" 
                 IsPassword="True"
-                Margin="0,0,50,0"
+                Margin="0,0,48,0"
                 Placeholder="Enter your Password"
                 PlaceholderColor="{StaticResource colorSecondary}"
                 Text="{Binding Password}"
@@ -61,7 +65,7 @@
         <StackLayout
                 HorizontalOptions="End"
                 Orientation="Horizontal"
-            Margin="0,10,50,0">
+            Margin="0,12,48,0">
             <Label
                 Text="Rememberme in this device"
                 VerticalOptions="Center"
@@ -74,7 +78,7 @@
                 HorizontalOptions="End"
                 FontAttributes="Bold"
                 FontSize="Medium"
-                Margin="0,10,50,0"
+                Margin="0,12,48,0"
                 Text="Forgot your password?"
                 TextColor="{StaticResource colorPrimary}"
                 >
@@ -88,25 +92,25 @@
             BackgroundColor="Transparent"
             Color="{StaticResource colorDanger}"
              VerticalOptions="Center"
-            WidthRequest="10"
+            WidthRequest="12"
             Margin="0"/>
         <StackLayout
             Orientation="Vertical"
             HorizontalOptions="End"
-            Margin="0,0,50,0"
+            Margin="0,0,48,0"
             Padding="0">
                 <Button
-                    Margin="0"
                     BackgroundColor="{StaticResource colorButtonPrimary}"
                     CornerRadius="30"
                     Command="{Binding LoginCommand}"
-                    IsEnabled="{Binding IsEnabled}"
-                    HorizontalOptions="Fill"
-                    Padding="0, 17"
-                    Text="Login"
-                    TextColor="White"
                     FontAttributes="Bold"
                     FontSize="Large"
+                    IsEnabled="{Binding IsEnabled}"
+                    HorizontalOptions="Fill"
+                    Margin="0,0,0,48"
+                    Padding="0, 16"
+                    Text="Login"
+                    TextColor="White"
             />
                 <Label
                     IsEnabled="{Binding IsEnabled}"
