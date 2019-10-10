@@ -55,6 +55,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Syncfusion.Xamarin.SfRotator">
+      <Version>17.3.0.14</Version>
+    </PackageReference>
+    <PackageReference Include="Syncfusion.Xamarin.SfRotator.Android">
+      <Version>17.3.0.14</Version>
+    </PackageReference>
     <PackageReference Include="Xam.Plugin.Connectivity">
       <Version>4.0.0.190-beta</Version>
     </PackageReference>

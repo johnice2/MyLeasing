@@ -1,8 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              xmlns:prism="http://prismlibrary.com"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"             
+             xmlns:syncfusion="clr-namespace:Syncfusion.SfRotator.XForms;assembly=Syncfusion.SfRotator.XForms"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="MyLeasing.Prism.Views.PropertyPage"
              BackgroundColor="{StaticResource colorBackgroud}"
@@ -11,19 +12,38 @@
     <ScrollView>
         <StackLayout
         Padding="16">
-           
-                <ffimageloading:CachedImage
-                    Aspect="AspectFit"
-                                Grid.Column="0"
-                                Source="{Binding Property.FirtsImage}"
-                                LoadingPlaceholder= "LoaderImage"
-                                ErrorPlaceholder= "ErrorImage"
-                                CacheDuration= "50"
-                                RetryCount= "3"
-                                RetryDelay= "600"
-                                DownsampleToViewSize = "true"/>
 
-                <Grid>
+            <syncfusion:SfRotator
+                SelectedDotColor="{StaticResource colorPrimary}"
+                BackgroundColor="{StaticResource colorBackgroud}"
+                EnableAutoPlay="True"  
+                EnableLooping="True"
+                HeightRequest="300"
+                ItemsSource="{Binding ImageCollection}"
+                NavigationDelay="5000"
+                NavigationDirection="Horizontal"
+                NavigationStripMode="Dots"
+                NavigationStripPosition="Bottom"
+               >
+                <syncfusion:SfRotator.ItemTemplate>
+                    <DataTemplate>
+                        <ffimageloading:CachedImage
+                            
+                            Aspect="AspectFit"
+                            CacheDuration= "50"
+                            DownsampleToViewSize = "true"
+                            ErrorPlaceholder= "ErrorImage"
+                            HeightRequest="300"
+                            LoadingPlaceholder= "LoaderImage"
+                            RetryCount= "3"
+                            RetryDelay= "600"
+                            Source="{Binding Image}"/>
+                    </DataTemplate>
+                </syncfusion:SfRotator.ItemTemplate>
+            </syncfusion:SfRotator>
+
+
+            <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="auto"/>
                         <ColumnDefinition Width="*"/>
