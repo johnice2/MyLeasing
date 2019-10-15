@@ -36,7 +36,14 @@ namespace MyLeasing.Prism.ViewModels
             set => SetProperty(ref _property, value);
         }
 
-       
+        public override void OnNavigatedTo(INavigationParameters parameters)
+        {
+            base.OnNavigatedTo(parameters);
+            Property = JsonConvert.DeserializeObject<PropertyResponse>(Settings.Property);
+            LoadImages();
+        }
+
+
         private void LoadImages()
         {
             var list = new List<RotatorModel>();

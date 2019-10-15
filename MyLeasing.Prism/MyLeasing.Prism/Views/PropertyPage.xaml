@@ -7,6 +7,7 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="MyLeasing.Prism.Views.PropertyPage"
              BackgroundColor="{StaticResource colorBackgroud}"
+             IconImageSource="ic_action_home"
              Title="{Binding Title}">
 
     <ScrollView>
@@ -24,6 +25,7 @@
                 NavigationDirection="Horizontal"
                 NavigationStripMode="Thumbnail"
                 NavigationStripPosition="Bottom"
+                HorizontalOptions="Center"
                >
                 <syncfusion:SfRotator.ItemTemplate>
                     <DataTemplate>
