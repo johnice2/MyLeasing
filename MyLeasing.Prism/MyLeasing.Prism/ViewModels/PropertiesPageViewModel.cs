@@ -15,13 +15,37 @@ namespace MyLeasing.Prism.ViewModels
         private readonly INavigationService _navigationService;
         private OwnerResponse _owner;
         private ObservableCollection<PropertyItemViewModel> _properties;
-        
+        public int item = 0;
 
         public PropertiesPageViewModel(
             INavigationService navigationService) : base(navigationService)
         {
             Title = "Properties";
             _navigationService = navigationService;
+        }
+
+        private string GetColor(int item)
+        {
+            var color = "";
+            if (item == 0)
+            {
+                color = "Blue";
+            }
+            if (item == 1)
+            {
+                color = "Yellow";
+            }
+            if (item == 2)
+            {
+                color = "Red";
+            }
+            if (item == 3)
+            {
+                color = "Green";
+                item = -1;
+            }
+            item++;
+            return color;
         }
 
         public ObservableCollection<PropertyItemViewModel> Properties

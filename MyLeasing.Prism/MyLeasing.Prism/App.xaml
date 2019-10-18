@@ -37,8 +37,6 @@
                 <Setter Property="TextColor" Value="{StaticResource colorFont}" />
             </Style>
 
-
-
         </ResourceDictionary>
 
     </Application.Resources>

@@ -12,11 +12,18 @@ namespace MyLeasing.Prism.ViewModels
         protected INavigationService NavigationService { get; private set; }
 
         private string _title;
+        private string _bColor;
         public string Title
         {
             get { return _title; }
             set { SetProperty(ref _title, value); }
         }
+        public string BColor
+        {
+            get { return _bColor; }
+            set { SetProperty(ref _bColor, value); }
+        }
+
 
         public ViewModelBase(INavigationService navigationService)
         {

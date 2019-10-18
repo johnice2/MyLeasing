@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="http://prismlibrary.com"
+             xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
              xmlns:Local="clr-namespace:MyLeasing.Prism"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="MyLeasing.Prism.Views.LoginPage"
@@ -13,121 +14,127 @@
             Source="Background2"
             Aspect="AspectFill"
                    />
-    <StackLayout Padding="48,160,0,0">
-            <Label
-                FontSize="Title"
-                Text="LeasingApp"
-                TextColor="{StaticResource colorButtonPrimary}"/>
-            <Label
-                Text="LOGIN"
-                FontSize="48"
-                FontAttributes="Bold"
-                TextColor="{StaticResource colorPrimary}"/>
+        <ScrollView>
+            <AbsoluteLayout>
+                <StackLayout
+                    AbsoluteLayout.LayoutBounds="0,0,1,1"
+                    AbsoluteLayout.LayoutFlags="All"
+                    Padding="48,40,0,0">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="Title"
+                        Text="LeasingApp"
+                        TextColor="{StaticResource colorButtonPrimary}"/>
+                    <Label
+                        Text="LOGIN"
+                        FontSize="Subtitle"
+                        FontAttributes="Bold"
+                        Margin="0,0,0,32"
+                        TextColor="{StaticResource colorPrimary}"/>
 
-        <Label
-                Margin="0,56,0,0"
-                Text="Email"
-                TextColor="{StaticResource colorPrimary}"/>
-        <Local:CustomEntry   
-                    BorderColor="{StaticResource colorSecondary}" 
-                    CornerRadius="25"
-                    FontAttributes="Bold"
-                    FontSize="20"  
-                    HorizontalTextAlignment="Start" 
-                    HorizontalOptions="FillAndExpand" 
-                    Keyboard="Email"
-                    Margin="0,0,48,0"
-                    Placeholder="Enter your Email" 
-                    PlaceholderColor="{StaticResource colorSecondary}"
-                    TextColor="{StaticResource colorPrimary}"
-                    Text="{Binding Email}"
-                    VerticalTextAlignment="End"/>
+                    <Label
+                        Text="Email"
+                        TextColor="{StaticResource colorPrimary}"/>
+                    <Local:CustomEntry   
+                        BorderColor="{StaticResource colorSecondary}" 
+                        CornerRadius="25"
+                        FontAttributes="Bold"
+                        FontSize="20"  
+                        HorizontalTextAlignment="Start" 
+                        HorizontalOptions="FillAndExpand" 
+                        Keyboard="Email"
+                        Margin="0,0,48,0"
+                        Placeholder="Enter your Email" 
+                        PlaceholderColor="{StaticResource colorSecondary}"
+                        TextColor="{StaticResource colorPrimary}"
+                        Text="{Binding Email}"
+                        VerticalTextAlignment="End"/>
 
-            <Label
-                 Margin="0,20,0,0"
-                 Text="Password"
-                     TextColor="{StaticResource colorPrimary}"/>
-            <Local:CustomEntry   
-                BorderColor="{StaticResource colorSecondary}"  
-                FontAttributes="Bold"
-                FontSize="20"  
-                CornerRadius="25"
-                HorizontalTextAlignment="Start" 
-                HorizontalOptions="FillAndExpand" 
-                IsPassword="True"
-                Margin="0,0,48,0"
-                Placeholder="Enter your Password"
-                PlaceholderColor="{StaticResource colorSecondary}"
-                Text="{Binding Password}"
-                TextColor="{StaticResource colorPrimary}"
-                VerticalTextAlignment="End"
-            />
-        <StackLayout
-                HorizontalOptions="End"
-                Orientation="Horizontal"
-            Margin="0,12,48,0">
-            <Label
-                Text="Rememberme in this device"
-                VerticalOptions="Center"
-                TextColor="{StaticResource colorPrimary}"/>
-            <CheckBox
-                  IsChecked="{Binding IsRemember}"
-                  Color="{StaticResource colorPrimary}"/>
-        </StackLayout>
-        <Label
-                HorizontalOptions="End"
-                FontAttributes="Bold"
-                FontSize="Medium"
-                Margin="0,12,48,0"
-                Text="Forgot your password?"
-                TextColor="{StaticResource colorPrimary}"
-                >
-            <Label.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding ForgotPasswordCommand}"/>
-            </Label.GestureRecognizers>
-        </Label>
-
-        <ActivityIndicator
-            IsRunning="{Binding IsRunning}"
-            BackgroundColor="Transparent"
-            Color="{StaticResource colorDanger}"
-             VerticalOptions="Center"
-            WidthRequest="12"
-            Margin="0"/>
-        <StackLayout
-            Orientation="Vertical"
-            HorizontalOptions="End"
-            Margin="0,0,48,0"
-            Padding="0">
-                <Button
-                    BackgroundColor="{StaticResource colorButtonPrimary}"
-                    CornerRadius="30"
-                    Command="{Binding LoginCommand}"
-                    FontAttributes="Bold"
-                    FontSize="Large"
-                    IsEnabled="{Binding IsEnabled}"
-                    HorizontalOptions="Fill"
-                    Margin="0,0,0,48"
-                    Padding="0, 16"
-                    Text="Login"
-                    TextColor="White"
-            />
-                <Label
-                    IsEnabled="{Binding IsEnabled}"
-                    FontAttributes="Bold"
-                    FontSize="Medium"
-                    Text="Don´t have an account? Sing Up"
-                    TextColor="{StaticResource colorPrimary}"
-                    >
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding RegisterCommand}"/>
-                    </Label.GestureRecognizers>
-                </Label>
-            
-                
-        </StackLayout>
-
-
-    </StackLayout>
+                    <Label
+                         Margin="0,20,0,0"
+                         Text="Password"
+                         TextColor="{StaticResource colorPrimary}"/>
+                    <Local:CustomEntry   
+                        BorderColor="{StaticResource colorSecondary}"  
+                        FontAttributes="Bold"
+                        FontSize="20"  
+                        CornerRadius="25"
+                        HorizontalTextAlignment="Start" 
+                        HorizontalOptions="FillAndExpand" 
+                        IsPassword="True"
+                        Margin="0,0,48,0"
+                        Placeholder="Enter your Password"
+                        PlaceholderColor="{StaticResource colorSecondary}"
+                        Text="{Binding Password}"
+                        TextColor="{StaticResource colorPrimary}"
+                        VerticalTextAlignment="End"
+                />
+                    <StackLayout
+                        HorizontalOptions="End"
+                        Orientation="Horizontal"
+                        Margin="0,12,48,0">
+                        <Label
+                            Text="Rememberme in this device"
+                            VerticalOptions="Center"
+                            TextColor="{StaticResource colorPrimary}"/>
+                        <CheckBox
+                            IsChecked="{Binding IsRemember}"
+                            Color="{StaticResource colorPrimary}"/>
+                    </StackLayout>
+                    <Label
+                        HorizontalOptions="End"
+                        FontAttributes="Bold"
+                        FontSize="Medium"
+                        Margin="0,8,48,0"
+                        Text="Forgot your password?"
+                        TextColor="{StaticResource colorPrimary}">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ForgotPasswordCommand}"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <StackLayout
+                        Orientation="Vertical"
+                        HorizontalOptions="End"
+                        Margin="0,0,32,0"
+                        Padding="0">
+                        <Button
+                            BackgroundColor="{StaticResource colorButtonPrimary}"
+                            CornerRadius="30"
+                            Command="{Binding LoginCommand}"
+                            FontAttributes="Bold"
+                            FontSize="Large"
+                            IsEnabled="{Binding IsEnabled}"
+                            HorizontalOptions="Fill"
+                            Margin="0,16"
+                            Padding="0"
+                            Text="Login"
+                            TextColor="White"
+                    />
+                        <Label
+                            IsEnabled="{Binding IsEnabled}"
+                            FontAttributes="Bold"
+                            FontSize="Medium"
+                            Text="Don't have an account? Sing Up"
+                            TextColor="{StaticResource colorButtonPrimary}">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding RegisterCommand}"/>
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </StackLayout>
+                </StackLayout>
+                <busyindicator:SfBusyIndicator  
+                        AnimationType="Gear"
+                        AbsoluteLayout.LayoutBounds=".5,.5,.5,.5"
+                        AbsoluteLayout.LayoutFlags="All"
+                        BackgroundColor="{StaticResource colorButtonPrimary}"
+                        HorizontalOptions="Center"
+                        TextColor="White"
+                        IsVisible="{Binding IsRunning}"
+                        Title="Loading..."
+                        VerticalOptions="Center"
+                        ViewBoxWidth="80"
+                        ViewBoxHeight="80"/>
+            </AbsoluteLayout>
+        </ScrollView>
     </Grid>
 </ContentPage>

@@ -1,6 +1,7 @@
 ﻿using Foundation;
 using Prism;
 using Prism.Ioc;
+using Syncfusion.SfBusyIndicator.XForms.iOS;
 using Syncfusion.SfRotator.XForms.iOS;
 using UIKit;
 
@@ -25,6 +26,7 @@ namespace MyLeasing.Prism.iOS
             global::Xamarin.Forms.Forms.Init();
             FFImageLoading.Forms.Platform.CachedImageRenderer.Init();
             new SfRotatorRenderer();
+            new SfBusyIndicatorRenderer();
             LoadApplication(new App(new iOSInitializer()));
 
             return base.FinishedLaunching(app, options);

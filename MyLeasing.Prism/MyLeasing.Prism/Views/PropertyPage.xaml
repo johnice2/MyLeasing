@@ -12,7 +12,8 @@
 
     <ScrollView>
         <StackLayout
-        Padding="16">
+        Padding="16"
+            BackgroundColor="{StaticResource colorBackgroud}">
 
             <syncfusion:SfRotator
                 SelectedDotColor="{StaticResource colorPrimary}"
