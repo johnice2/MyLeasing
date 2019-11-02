@@ -8,16 +8,24 @@
   <ItemGroup>
     <Compile Remove="wwwroot\lib\bootstrap\dist\css\**" />
     <Compile Remove="wwwroot\lib\bootstrap\dist\img\**" />
-    <Compile Remove="wwwroot\NewFolder2\**" />
+    <Compile Remove="wwwroot\NewFolder1\**" />
+    <Compile Remove="wwwroot\NewFolder\**" />
     <Content Remove="wwwroot\lib\bootstrap\dist\css\**" />
     <Content Remove="wwwroot\lib\bootstrap\dist\img\**" />
-    <Content Remove="wwwroot\NewFolder2\**" />
+    <Content Remove="wwwroot\NewFolder1\**" />
+    <Content Remove="wwwroot\NewFolder\**" />
     <EmbeddedResource Remove="wwwroot\lib\bootstrap\dist\css\**" />
     <EmbeddedResource Remove="wwwroot\lib\bootstrap\dist\img\**" />
-    <EmbeddedResource Remove="wwwroot\NewFolder2\**" />
+    <EmbeddedResource Remove="wwwroot\NewFolder1\**" />
+    <EmbeddedResource Remove="wwwroot\NewFolder\**" />
     <None Remove="wwwroot\lib\bootstrap\dist\css\**" />
     <None Remove="wwwroot\lib\bootstrap\dist\img\**" />
-    <None Remove="wwwroot\NewFolder2\**" />
+    <None Remove="wwwroot\NewFolder1\**" />
+    <None Remove="wwwroot\NewFolder\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\css\Y2xvdWRmbGFyZS1hcHBbYXBwLWlkPSJhLWJldHR…" />
   </ItemGroup>
 
   <ItemGroup>
@@ -26,21 +34,28 @@
 
 
   <ItemGroup>
+    <PackageReference Include="MailKit" Version="2.3.2" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.4" />
   </ItemGroup>
 
 
   <ItemGroup>
+    <Folder Include="wwwroot\cdn-cgi\scripts\" />
     <Folder Include="wwwroot\images\Properties\" />
-    <Folder Include="wwwroot\NewFolder1\" />
-    <Folder Include="wwwroot\NewFolder\" />
   </ItemGroup>
 
 
   <ItemGroup>
     <ProjectReference Include="..\MyLeasing.Common\MyLeasing.Common.csproj" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Reference Include="Mono.Android">
+      <HintPath>..\..\..\Program Files (x86)\Microsoft Visual Studio\2019\Professional\Common7\IDE\ReferenceAssemblies\Microsoft\Framework\MonoAndroid\v9.0\Mono.Android.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>
