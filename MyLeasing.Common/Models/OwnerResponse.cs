@@ -20,7 +20,12 @@ namespace MyLeasing.Common.Models
 
         public ICollection<PropertyResponse> Properties { get; set; }
 
+        public ICollection<ContractResponse> Contracts { get; set; }
+
+        public int RoleId { get; set; }
+
         public string FullName => $"{FirstName} {LastName}";
+
     }
 }
 
