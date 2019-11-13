@@ -1,5 +1,7 @@
-﻿using MyLeasing.Common.Models;
+﻿using MyLeasing.Common.Helpers;
+using MyLeasing.Common.Models;
 using MyLeasing.Prism.ViewsModels;
+using Newtonsoft.Json;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
@@ -20,66 +22,42 @@ namespace MyLeasing.Prism.ViewModels
         public PropertiesPageViewModel(
             INavigationService navigationService) : base(navigationService)
         {
-            Title = "Properties";
             _navigationService = navigationService;
+            LoadOwner();
+            Title = "Properties";
+            
         }
 
-        private string GetColor(int item)
-        {
-            var color = "";
-            if (item == 0)
-            {
-                color = "Blue";
-            }
-            if (item == 1)
-            {
-                color = "Yellow";
-            }
-            if (item == 2)
-            {
-                color = "Red";
-            }
-            if (item == 3)
-            {
-                color = "Green";
-                item = -1;
-            }
-            item++;
-            return color;
-        }
+      
 
         public ObservableCollection<PropertyItemViewModel> Properties
         {
             get => _properties;
             set => SetProperty(ref _properties, value);
-        }
+        }       
 
-        public override void OnNavigatedTo(INavigationParameters parameters)
+        private void LoadOwner()
         {
-            base.OnNavigatedTo(parameters);
+            _owner = JsonConvert.DeserializeObject<OwnerResponse>(Settings.Owner);
 
-            if (parameters.ContainsKey("owner"))
+            Title = $" {_owner.FullName}";
+            Properties = new ObservableCollection<PropertyItemViewModel>(_owner.Properties.Select(p => new PropertyItemViewModel(_navigationService)
             {
-                _owner = parameters.GetValue<OwnerResponse>("owner");
-                Title = $"Properties of: {_owner.FullName}";
-                Properties = new ObservableCollection<PropertyItemViewModel>(_owner.Properties.Select(p => new PropertyItemViewModel(_navigationService)
-                {
-                    Address = p.Address,
-                    Contracts = p.Contracts,
-                    HasParkingLot = p.HasParkingLot,
-                    Id = p.Id,
-                    IsAvailable = p.IsAvailable,
-                    Neighborhood = p.Neighborhood,
-                    Price = p.Price,
-                    PropertyImages = p.PropertyImages,
-                    PropertyType = p.PropertyType,
-                    Remarks = p.Remarks,
-                    Rooms = p.Rooms,
-                    SquareMeters = p.SquareMeters,
-                    Stratum = p.Stratum
+                Address = p.Address,
+                Contracts = p.Contracts,
+                HasParkingLot = p.HasParkingLot,
+                Id = p.Id,
+                IsAvailable = p.IsAvailable,
+                Neighborhood = p.Neighborhood,
+                Price = p.Price,
+                PropertyImages = p.PropertyImages,
+                PropertyType = p.PropertyType,
+                Remarks = p.Remarks,
+                Rooms = p.Rooms,
+                SquareMeters = p.SquareMeters,
+                Stratum = p.Stratum
 
-                }).ToList());
-            }
+            }).ToList());
         }
     }
 }
