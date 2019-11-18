@@ -10,7 +10,7 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>MyLeasing.Prism.iOS</RootNamespace>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
-    <AssemblyName>MyLeasing</AssemblyName>
+    <AssemblyName>MyLeasing.Prism.iOS</AssemblyName>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
   </PropertyGroup>
