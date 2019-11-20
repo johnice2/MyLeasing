@@ -1,0 +1,266 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+         	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+         	xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+         	xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
+            xmlns:Local="clr-namespace:MyLeasing.Prism"
+         	prism:ViewModelLocator.AutowireViewModel="True"
+         	x:Class="MyLeasing.Prism.Views.RegisterPage"
+         	BackgroundColor="White"
+         	Title="{Binding Title}">
+
+    <ScrollView>
+        <AbsoluteLayout>
+            <StackLayout
+            	AbsoluteLayout.LayoutBounds="0,0,1,1"
+            	AbsoluteLayout.LayoutFlags="All"
+            	Padding="8,8,4,8">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label
+                        Padding="0"
+                        Margin="0"
+                    	Grid.Row="0"
+                    	Grid.Column="0"
+                    	Text="Document"
+                    	VerticalOptions="Center"
+                        FontSize="Subtitle"
+                        FontAttributes="Bold"
+                        TextColor="{StaticResource colorPrimary}"/>
+                    <Local:CustomEntry  
+                        Grid.Row="0"
+                    	Grid.Column="1"
+                        BorderColor="{StaticResource colorSecondary}" 
+                        CornerRadius="25"
+                        FontAttributes="Bold"
+                        FontSize="15"  
+                        HorizontalTextAlignment="Start" 
+                        HorizontalOptions="FillAndExpand" 
+                        Keyboard="Numeric"
+                        Margin="0,0,12,0"
+                        Placeholder="Enter your document number..."
+                        PlaceholderColor="{StaticResource colorSecondary}"
+                        TextColor="{StaticResource colorPrimary}"
+                        VerticalTextAlignment="End"
+                        Text="{Binding Document}"/>
+                   
+
+                    <Label
+                    	Grid.Row="1"
+                    	Grid.Column="0"
+                    	Text="Firstname"
+                    	VerticalOptions="Center" 
+                        FontSize="Subtitle"
+                        FontAttributes="Bold"
+                        TextColor="{StaticResource colorPrimary}"/>
+                    <Local:CustomEntry  
+                    	Grid.Row="1"
+                    	Grid.Column="1"
+                         BorderColor="{StaticResource colorSecondary}" 
+                        CornerRadius="25"
+                        FontAttributes="Bold"
+                        FontSize="15"  
+                        HorizontalTextAlignment="Start" 
+                        HorizontalOptions="FillAndExpand" 
+                    	Placeholder="Enter your firstname..."
+                         PlaceholderColor="{StaticResource colorSecondary}"
+                        TextColor="{StaticResource colorPrimary}"
+                        VerticalTextAlignment="End"
+                    	Text="{Binding FirstName}"/>
+
+                    <Label
+                    	Grid.Row="2"
+                    	Grid.Column="0"
+                    	Text="Lastname"
+                    	VerticalOptions="Center"
+                          FontSize="Subtitle"
+                        FontAttributes="Bold"
+                        TextColor="{StaticResource colorPrimary}"/>
+                    <Local:CustomEntry  
+                    	Grid.Row="2"
+                    	Grid.Column="1"
+                         BorderColor="{StaticResource colorSecondary}" 
+                        CornerRadius="25"
+                        FontAttributes="Bold"
+                        FontSize="15"  
+                        HorizontalTextAlignment="Start" 
+                        HorizontalOptions="FillAndExpand" 
+                    	Placeholder="Enter your last name..."
+                         PlaceholderColor="{StaticResource colorSecondary}"
+                        TextColor="{StaticResource colorPrimary}"
+                        VerticalTextAlignment="End"
+                    	Text="{Binding LastName}"/>
+
+                    <Label
+                    	Grid.Row="3"
+                    	Grid.Column="0"
+                    	Text="Address"
+                    	VerticalOptions="Center"
+                        FontSize="Subtitle"
+                        FontAttributes="Bold"
+                        TextColor="{StaticResource colorPrimary}"/>
+                    <Local:CustomEntry  
+                    	Grid.Row="3"
+                    	Grid.Column="1"
+                         BorderColor="{StaticResource colorSecondary}" 
+                        CornerRadius="25"
+                        FontAttributes="Bold"
+                        FontSize="15"  
+                        HorizontalTextAlignment="Start" 
+                        HorizontalOptions="FillAndExpand" 
+                    	Placeholder="Enter your address..."
+                         PlaceholderColor="{StaticResource colorSecondary}"
+                        TextColor="{StaticResource colorPrimary}"
+                        VerticalTextAlignment="End"
+                    	Text="{Binding Address}"/>
+
+                    <Label
+                    	Grid.Row="4"
+                    	Grid.Column="0"
+                    	Text="Email"
+                    	VerticalOptions="Center"
+                          FontSize="Subtitle"
+                        FontAttributes="Bold"
+                        TextColor="{StaticResource colorPrimary}"/>
+                    <Local:CustomEntry  
+                    	Grid.Row="4"
+                    	Grid.Column="1"
+                         BorderColor="{StaticResource colorSecondary}" 
+                        CornerRadius="25"
+                        FontAttributes="Bold"
+                        FontSize="15"  
+                        HorizontalTextAlignment="Start" 
+                        HorizontalOptions="FillAndExpand" 
+                    	Keyboard="Email"
+                    	Placeholder="Enter your email..."
+                         PlaceholderColor="{StaticResource colorSecondary}"
+                        TextColor="{StaticResource colorPrimary}"
+                        VerticalTextAlignment="End"
+                    	Text="{Binding Email}"/>
+
+                    <Label
+                    	Grid.Row="5"
+                    	Grid.Column="0"
+                    	Text="Phone"
+                    	VerticalOptions="Center"
+                          FontSize="Subtitle"
+                        FontAttributes="Bold"
+                        TextColor="{StaticResource colorPrimary}"/>
+                    <Local:CustomEntry  
+                    	Grid.Row="5"
+                    	Grid.Column="1"
+                         BorderColor="{StaticResource colorSecondary}" 
+                        CornerRadius="25"
+                        FontAttributes="Bold"
+                        FontSize="15"  
+                        HorizontalTextAlignment="Start" 
+                        HorizontalOptions="FillAndExpand" 
+                    	Placeholder="Enter your phone number..."
+                        Keyboard="Telephone"
+                         PlaceholderColor="{StaticResource colorSecondary}"
+                        TextColor="{StaticResource colorPrimary}"
+                        VerticalTextAlignment="End"
+                    	Text="{Binding Phone}"/>
+
+                    <Label
+                    	Grid.Row="6"
+                    	Grid.Column="0"
+                    	Text="Register as"
+                    	VerticalOptions="Center"
+                          FontSize="Subtitle"
+                        FontAttributes="Bold"
+                        TextColor="{StaticResource colorPrimary}"/>
+                    <Picker
+                    	Grid.Row="6"
+                    	Grid.Column="1"
+                    	ItemDisplayBinding="{Binding Name}"
+                    	ItemsSource="{Binding Roles}"
+                    	SelectedItem="{Binding Role}"
+                        TextColor="{StaticResource colorSecondary}"
+                        TitleColor="{StaticResource colorSecondary}"
+                        
+                    	Title="Select a role...">
+                    </Picker>  
+
+                    <Label
+                    	Grid.Row="7"
+                    	Grid.Column="0"
+                    	Text="Password"
+                    	VerticalOptions="Center"
+                          FontSize="Subtitle"
+                        FontAttributes="Bold"
+                        TextColor="{StaticResource colorPrimary}"/>
+                    <Local:CustomEntry  
+                    	Grid.Row="7"
+                    	Grid.Column="1"
+                         BorderColor="{StaticResource colorSecondary}" 
+                        CornerRadius="25"
+                        FontAttributes="Bold"
+                        FontSize="15"  
+                        HorizontalTextAlignment="Start" 
+                        HorizontalOptions="FillAndExpand" 
+                    	IsPassword="True"
+                    	Placeholder="Enter your password"
+                         PlaceholderColor="{StaticResource colorSecondary}"
+                        TextColor="{StaticResource colorPrimary}"
+                        VerticalTextAlignment="End"
+                    	Text="{Binding Password}"/>
+
+                    <Label
+                    	Grid.Row="8"
+                    	Grid.Column="0"
+                    	Text="Password Confirm"
+                    	VerticalOptions="Center"
+                          FontSize="Subtitle"
+                        FontAttributes="Bold"
+                        TextColor="{StaticResource colorPrimary}"/>
+                    <Local:CustomEntry  
+                    	Grid.Row="8"
+                    	Grid.Column="1"
+                         BorderColor="{StaticResource colorSecondary}" 
+                        CornerRadius="25"
+                        FontAttributes="Bold"
+                        FontSize="15"  
+                        HorizontalTextAlignment="Start" 
+                        HorizontalOptions="FillAndExpand" 
+                    	IsPassword="True"
+                    	Placeholder="Enter the password confirm..."
+                         PlaceholderColor="{StaticResource colorSecondary}"
+                        TextColor="{StaticResource colorPrimary}"
+                        VerticalTextAlignment="End"
+                    	Text="{Binding PasswordConfirm}"/>
+                </Grid>
+                <Button
+                    BackgroundColor="{StaticResource colorButtonPrimary}"
+                    CornerRadius="30"
+                	Command="{Binding RegisterCommand}"
+                	IsEnabled="{Binding IsEnabled}"
+                     FontAttributes="Bold"
+                            FontSize="Large"
+                	Text="Register"
+                     HorizontalOptions="Fill"
+                            Margin="0,16"
+                            Padding="0"
+                    TextColor="White"
+                	VerticalOptions="EndAndExpand"/>
+            </StackLayout>
+            <busyindicator:SfBusyIndicator  
+                        AnimationType="Gear"
+                        AbsoluteLayout.LayoutBounds=".5,.5,.5,.5"
+                        AbsoluteLayout.LayoutFlags="All"
+                        BackgroundColor="{StaticResource colorButtonPrimary}"
+                        HorizontalOptions="Center"
+                        TextColor="White"
+                        IsVisible="{Binding IsRunning}"
+                        Title="Registering..."
+                        VerticalOptions="Center"
+                        ViewBoxWidth="80"
+                        ViewBoxHeight="80"/>
+        </AbsoluteLayout>
+    </ScrollView>
+
+</ContentPage>
